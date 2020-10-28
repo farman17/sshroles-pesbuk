@@ -5,4 +5,4 @@
   roles:
     - role: nginx
     - role: php
-    - role: wp
+   
