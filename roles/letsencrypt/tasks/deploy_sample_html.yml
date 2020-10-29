@@ -13,8 +13,37 @@
     repo: '{{ github_repo }}'
     dest: /var/www/{{ main_domain_name }}/{{ folder_web }}/
     
-- name: copy wpconfig
+
+- name: copy configuration file to {{ folder_web }}
   template:
-    src: wp-config.php
+    src: config.php
     dest: /var/www/{{ main_domain_name }}/{{ folder_web }}/
-  
+
+
+- name: copy dump SQL file to tmp
+  template:
+    src: dump.sql
+    dest: /var/tmp/
+
+
+- name: Run SQL commands to create database {{ pesbuk_db_name }}
+  mysql_db:
+        login_host: "{{ pesbuk_db_hostname }}"
+        login_password: "{{ pesbuk_db_password }}"
+        login_user: "{{ pesbuk_db_user }}"
+        login_port: "3306"
+        name: "{{ pesbuk_db_name }}"
+        state: present
+
+
+
+- name: backup mysql db server
+  shell: >
+    mysql \
+      -u {{ pesbuk_db_user }} \
+      --password={{ pesbuk_db_password }} \
+      -h {{ pesbuk_db_hostname }} \
+      {{ pesbuk_db_name }} \
+      > /var/tmp/dump.sql
+
+
