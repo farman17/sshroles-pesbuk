@@ -3,6 +3,7 @@
     path: /var/www/{{ main_domain_name }}/{{ folder_web }}/
     state: directory
     mode: '0755'
+    
 
 - name: install git
   apt:
@@ -12,7 +13,7 @@
   git:
     repo: '{{ github_repo }}'
     dest: /var/www/{{ main_domain_name }}/{{ folder_web }}/
-    
+    force: yes
 
 - name: copy configuration file to {{ folder_web }}
   template:
@@ -37,13 +38,14 @@
 
 
 
-- name: backup mysql db server
-  shell: >
-    mysql \
-      -u {{ pesbuk_db_user }} \
-      --password={{ pesbuk_db_password }} \
-      -h {{ pesbuk_db_hostname }} \
-      {{ pesbuk_db_name }} \
-      > /var/tmp/dump.sql
-
-
+- name: Deploy Database Dump SQL to remote server {{ main_domain }} 
+  mysql_db:
+        login_host: "{{ pesbuk_db_hostname }}"
+        login_password: "{{ pesbuk_db_password }}"
+        login_user: "{{ pesbuk_db_user }}"
+        login_port: "3306"
+        name: "{{ pesbuk_db_name }}"
+        state: import
+        target: "{{ item_path }}"
+       
+       
