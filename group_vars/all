@@ -6,7 +6,7 @@ email_letsencrypt: ahmadfarman1701@gmail.com
 
 
 # config pesbuk
-pesbuk_db_name: samehada 
+pesbuk_db_name: maestrodb
 pesbuk_db_user: admin
 pesbuk_db_password: farman17
 pesbuk_db_hostname: dbsosmed.cjorhe5jzkni.us-east-2.rds.amazonaws.com
@@ -16,10 +16,13 @@ pesbuk_db_hostname: dbsosmed.cjorhe5jzkni.us-east-2.rds.amazonaws.com
 github_repo: https://github.com/sdcilsy/sosial-media.git
 
 #Folder for Deploy Website
-folder_web: fesbuks
+folder_web: mediaku
 
 #Folder location to deploy DB Dump SQL
-item_path: /var/tmp/dump.sql
+item_path: /var/tmp/
+ 
+#SQL name (does not need to be changed, the dump.sql is a default name)
+sql_name: dump
 
-#SQL name:
-sql_name: dump.sql
+#Folder and name file to deploy, adjust from top content
+target_dump: /var/tmp/dump.sql
