@@ -9,7 +9,7 @@ email_letsencrypt: ahmadfarman1701@gmail.com
 pesbuk_db_name: maestrodb
 pesbuk_db_user: admin
 pesbuk_db_password: farman17
-pesbuk_db_hostname: dbsosmed.cjorhe5jzkni.us-east-2.rds.amazonaws.com
+pesbuk_db_hostname: dbsosmed.ce5wbyf7mq0s.us-east-2.rds.amazonaws.com
 
 
 # Github repository
