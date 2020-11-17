@@ -13,7 +13,7 @@ pesbuk_db_hostname: dbsosmed.ce5wbyf7mq0s.us-east-2.rds.amazonaws.com
 
 
 # Github repository
-github_repo: https://github.com/sdcilsy/sosial-media.git
+github_repo: https://github.com/farman17/sosmed.git
 
 #Folder for Deploy Website
 folder_web: mediaku
